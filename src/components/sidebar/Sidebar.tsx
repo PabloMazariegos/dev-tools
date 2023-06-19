@@ -1,3 +1,4 @@
+import SideBarItems from './SidebarItems';
 import {
   Drawer,
   DrawerBody,
@@ -6,7 +7,6 @@ import {
   DrawerHeader,
   Flex,
   Input,
-  Link,
   Stack,
   useBreakpointValue
 } from '@chakra-ui/react';
@@ -33,9 +33,7 @@ const Sidebar: React.FC<props> = ({ isOpen, onClose }) => {
         display={{ base: isMobile ? 'none' : isOpen ? 'block' : 'none' }}
       >
         <Stack>
-          <Link>Option 1</Link>
-          <Link>Option 2</Link>
-          <Link>Option 3</Link>
+          <SideBarItems />
         </Stack>
       </Flex>
       <Drawer isOpen={openDrawer} placement='left' onClose={onClose}>
