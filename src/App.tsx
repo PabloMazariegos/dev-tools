@@ -1,20 +1,21 @@
-import { Flex, useBreakpointValue, useDisclosure } from '@chakra-ui/react';
+import { ReactNode } from 'react';
+import { Box, useDisclosure } from '@chakra-ui/react';
 
-import Navbar from '@/components/navbar/Navbar';
-import Sidebar from '@/components/sidebar/Sidebar';
+import SidebarContent from './components/SidebarContent.tsx/SidebarContent';
+import MobileNav from './components/MobileNav/MobileNav';
+import MobileDrawer from './components/MobileNav/MobileDrawer';
 
-function App() {
-  const isMobile = useBreakpointValue({ base: true, md: false }, { ssr: false });
-  const { isOpen, onClose, onToggle } = useDisclosure({ defaultIsOpen: !isMobile });
+export default function App({ children }: { children: ReactNode }) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Flex>
-      <Sidebar isOpen={isOpen} onClose={onClose} />
-      <Flex direction='column' width='full'>
-        <Navbar onToggle={onToggle} />
-      </Flex>
-    </Flex>
+    <Box minH="100vh" bg="gray.900">
+      <SidebarContent onClose={onClose} display={{ base: 'none', md: 'block' }} />
+      <MobileDrawer isOpen={isOpen} onClose={onClose} />
+      <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
+      <Box ml={{ base: 0, md: '80' }} p="4">
+        {children}
+      </Box>
+    </Box>
   );
 }
-
-export default App;

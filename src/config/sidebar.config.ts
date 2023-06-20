@@ -1,5 +1,5 @@
 import { LuBinary, LuPackagePlus, LuFingerprint } from 'react-icons/lu';
-import { BsFiletypeSql, BsGear, BsFileEarmarkText, BsImage } from 'react-icons/bs';
+import { BsFiletypeSql, BsGear, BsFileEarmarkText, BsImage, BsRegex, BsInputCursorText } from 'react-icons/bs';
 import { VscJson, VscSymbolKeyword } from 'react-icons/vsc';
 import { SidebarCategoryProps } from '@/types/SidebarTypes';
 
@@ -52,6 +52,18 @@ export const sidebarData: Array<SidebarCategoryProps> = [
         label: 'Java Class <> JSON ',
         icon: VscJson,
         slug: 'java-to-json'
+      }
+    ]
+  },
+  {
+    label: 'Text',
+    icon: BsInputCursorText,
+    slug: 'text',
+    items: [
+      {
+        label: 'RegEx Tester',
+        icon: BsRegex,
+        slug: 'regex-tester'
       }
     ]
   }
