@@ -17,6 +17,8 @@ const SidebarContent = ({ onClose, ...BoxProps }: SidebarProps) => {
       width={{ base: 'full', md: '80' }}
       pos="fixed"
       height="full"
+      overflowY="auto"
+      paddingBottom="5"
       {...BoxProps}
     >
       <Flex height="20" alignItems="center" mx="8" justifyContent="space-between">

@@ -11,7 +11,6 @@ const NavItem = ({ icon, children, ...FlexProps }: NavItemProps) => {
   return (
     <Link href="#" style={{ textDecoration: 'none' }} _focus={{ boxShadow: 'none' }}>
       <Flex
-        align="center"
         p="3"
         mx="4"
         borderRadius="lg"
