@@ -32,7 +32,19 @@ const SideBarItems = () => {
             </Flex>
 
             {category.items.map((item) => (
-              <Link key={item.slug} display="flex" width="full" gap={3} paddingLeft={6} paddingBottom={1} paddingTop={2}>
+              <Link
+                key={item.slug}
+                display="flex"
+                width="full"
+                gap={3}
+                paddingLeft={6}
+                paddingBottom={1}
+                paddingTop={2}
+                borderRadius="lg"
+                _hover={{
+                  bg: 'cyan.400',
+                  color: 'white'
+                }}>
                 <Icon as={item.icon} boxSize={5}></Icon>
                 <Text fontSize="medium">{item.label}</Text>
               </Link>

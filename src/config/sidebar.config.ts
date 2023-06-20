@@ -1,8 +1,9 @@
 import { LuBinary, LuPackagePlus, LuFingerprint } from 'react-icons/lu';
 import { BsFiletypeSql, BsGear, BsFileEarmarkText, BsImage } from 'react-icons/bs';
 import { VscJson, VscSymbolKeyword } from 'react-icons/vsc';
+import { SidebarCategoryProps } from '@/types/SidebarTypes';
 
-export const sidebarData = [
+export const sidebarData: Array<SidebarCategoryProps> = [
   {
     label: 'Encoders / Decoders',
     icon: LuBinary,
