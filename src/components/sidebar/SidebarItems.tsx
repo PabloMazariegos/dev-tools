@@ -1,4 +1,4 @@
-import { sidebarData } from '@/config/sidbar.config';
+import { sidebarData } from '@/config/sidebar.config';
 import { AiOutlineHome } from 'react-icons/ai';
 import { BsSearch } from 'react-icons/bs';
 import { Flex, Icon, Input, InputGroup, InputRightElement, Divider, Text, VStack, Link } from '@chakra-ui/react';
