@@ -6,42 +6,51 @@ export const sidebarData = [
   {
     label: 'Encoders / Decoders',
     icon: LuBinary,
+    slug: 'encoder-decoder',
     items: [
       {
         label: 'Base64 Text',
-        icon: BsFileEarmarkText
+        icon: BsFileEarmarkText,
+        slug: 'base64-text'
       },
       {
         label: 'Base64 Image',
-        icon: BsImage
+        icon: BsImage,
+        slug: 'base64-image'
       }
     ]
   },
   {
     label: 'Generators',
     icon: LuPackagePlus,
+    slug: 'generators',
     items: [
       {
         label: 'UUID',
-        icon: VscSymbolKeyword
+        icon: VscSymbolKeyword,
+        slug: 'uuid'
       },
       {
         label: 'SQL Scripts',
-        icon: BsFiletypeSql
+        icon: BsFiletypeSql,
+        slug: 'sql-scritps'
       },
       {
         label: 'Bcrypt',
-        icon: LuFingerprint
+        icon: LuFingerprint,
+        slug: 'bcrypt'
       }
     ]
   },
   {
     label: 'Converters',
     icon: BsGear,
+    slug: 'converters',
     items: [
       {
         label: 'Java Class <> JSON ',
-        icon: VscJson
+        icon: VscJson,
+        slug: 'java-to-json'
       }
     ]
   }

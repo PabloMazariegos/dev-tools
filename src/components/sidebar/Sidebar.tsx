@@ -6,7 +6,6 @@ import {
   DrawerContent,
   DrawerHeader,
   Flex,
-  Input,
   Stack,
   useBreakpointValue
 } from '@chakra-ui/react';
@@ -23,26 +22,27 @@ const Sidebar: React.FC<props> = ({ isOpen, onClose }) => {
   return (
     <>
       <Flex
-        as='nav'
-        direction='column'
-        bg='blackAlpha.300'
-        height='100vh'
+        as="nav"
+        direction="column"
+        bg="blackAlpha.300"
+        height="100vh"
         px={4}
         py={5}
         width={{ base: '300px', md: '400px' }}
-        display={{ base: isMobile ? 'none' : isOpen ? 'block' : 'none' }}
-      >
+        display={{ base: isMobile ? 'none' : isOpen ? 'block' : 'none' }}>
         <Stack>
           <SideBarItems />
         </Stack>
       </Flex>
-      <Drawer isOpen={openDrawer} placement='left' onClose={onClose}>
+      <Drawer isOpen={openDrawer} placement="left" onClose={onClose}>
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader>Create your account</DrawerHeader>
+          <DrawerHeader>Dev Tools</DrawerHeader>
 
           <DrawerBody>
-            <Input placeholder='Type here...' />
+            <Stack>
+              <SideBarItems />
+            </Stack>
           </DrawerBody>
         </DrawerContent>
       </Drawer>

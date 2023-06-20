@@ -23,7 +23,7 @@ const SideBarItems = () => {
         <Divider />
 
         {sidebarData.map((category) => (
-          <Flex width="full" direction="column" alignItems="center" gap={3} minHeight="60px">
+          <Flex key={category.slug} width="full" direction="column" alignItems="center" gap={3} minHeight="60px">
             <Flex alignItems="center" width="full" gap={3} paddingTop={5}>
               <Icon as={category.icon} boxSize={5}></Icon>
               <Text fontWeight="bold" fontSize="medium">
@@ -32,7 +32,7 @@ const SideBarItems = () => {
             </Flex>
 
             {category.items.map((item) => (
-              <Link display="flex" width="full" gap={3} _hover={{ background: 'blackAlpha.400' }}>
+              <Link key={item.slug} display="flex" width="full" gap={3} paddingLeft={6} paddingBottom={1} paddingTop={2}>
                 <Icon as={item.icon} boxSize={5}></Icon>
                 <Text fontSize="medium">{item.label}</Text>
               </Link>
