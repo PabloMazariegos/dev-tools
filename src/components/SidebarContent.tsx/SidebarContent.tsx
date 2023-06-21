@@ -28,11 +28,13 @@ const SidebarContent = ({ onClose, ...BoxProps }: SidebarProps) => {
         <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
       </Flex>
 
-      <NavItem icon={AiOutlineHome} marginBottom="2">
-        <Text fontSize="sm" fontWeight="bold">
-          All Tools
-        </Text>
-      </NavItem>
+      <Flex direction="column" width="full">
+        <NavItem icon={AiOutlineHome} marginBottom="1" href="/" paddingLeft="7">
+          <Text fontSize="sm" fontWeight="bold">
+            All Tools
+          </Text>
+        </NavItem>
+      </Flex>
 
       <Divider />
 
@@ -46,7 +48,7 @@ const SidebarContent = ({ onClose, ...BoxProps }: SidebarProps) => {
           </Flex>
 
           {category.items.map((item) => (
-            <NavItem key={item.label} icon={item.icon} paddingLeft="9">
+            <NavItem key={item.label} icon={item.icon} href={item.link} paddingLeft="9">
               <Text fontSize="sm">{item.label}</Text>
             </NavItem>
           ))}

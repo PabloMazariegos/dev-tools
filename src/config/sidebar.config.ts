@@ -7,63 +7,59 @@ export const sidebarData: Array<SidebarCategoryProps> = [
   {
     label: 'Encoders / Decoders',
     icon: LuBinary,
-    slug: 'encoder-decoder',
     items: [
       {
         label: 'Base64 Text',
         icon: BsFileEarmarkText,
-        slug: 'base64-text'
+        link: '/encoders/base64-text'
       },
       {
         label: 'Base64 Image',
         icon: BsImage,
-        slug: 'base64-image'
+        link: '/encoders/base64-image'
       }
     ]
   },
   {
     label: 'Generators',
     icon: LuPackagePlus,
-    slug: 'generators',
     items: [
       {
         label: 'UUID',
         icon: VscSymbolKeyword,
-        slug: 'uuid'
+        link: '/generators/uuid'
       },
       {
         label: 'SQL Scripts',
         icon: BsFiletypeSql,
-        slug: 'sql-scritps'
+        link: '/generators/sql'
       },
       {
         label: 'Bcrypt',
         icon: LuFingerprint,
-        slug: 'bcrypt'
+        link: '/generators/bcrypt'
       }
     ]
   },
   {
     label: 'Converters',
     icon: BsGear,
-    slug: 'converters',
     items: [
       {
         label: 'Java Class <> JSON ',
         icon: VscJson,
-        slug: 'java-to-json'
+        link: '/converters/java-json'
       }
     ]
   },
   {
     label: 'Text',
     icon: BsInputCursorText,
-    slug: 'text',
     items: [
       {
         label: 'RegEx Tester',
         icon: BsRegex,
-        slug: 'regex-tester'
+        link: '/text/regex-tester'
       }
     ]
   }
