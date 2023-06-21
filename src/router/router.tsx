@@ -47,7 +47,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: 'java-json',
-            element: <h1>UUID</h1>
+            element: <h1>JAVA JSON</h1>
           }
         ]
       },
@@ -56,7 +56,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: 'regex-tester',
-            element: <h1>UUID</h1>
+            element: <h1>REGEX TESTER</h1>
           }
         ]
       },

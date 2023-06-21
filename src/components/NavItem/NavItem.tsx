@@ -17,7 +17,7 @@ const NavItem = ({ icon, children, href, ...FlexProps }: NavItemProps) => {
       to={href}
       end
       _activeLink={{
-        backgroundColor: 'blue.600'
+        backgroundColor: 'blue.700'
       }}
       style={{
         textDecoration: 'none'
