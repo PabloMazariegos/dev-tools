@@ -1,6 +1,6 @@
 import { Drawer, DrawerContent } from '@chakra-ui/react';
 
-import SidebarContent from '../SidebarContent.tsx/SidebarContent';
+import SidebarContent from '../SidebarContent/SidebarContent';
 
 interface MobileDrawerProps {
   isOpen: boolean;
@@ -12,11 +12,11 @@ const MobileDrawer = ({ isOpen, onClose }: MobileDrawerProps) => {
     <Drawer
       autoFocus={false}
       isOpen={isOpen}
-      placement="left"
+      placement='left'
       onClose={onClose}
       returnFocusOnClose={false}
       onOverlayClick={onClose}
-      size="sm"
+      size='xs'
     >
       <DrawerContent>
         <SidebarContent onClose={onClose} />
