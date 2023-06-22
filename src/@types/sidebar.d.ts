@@ -1,12 +1,12 @@
 import { IconType } from 'react-icons';
 
-export interface SidebarCategoryProps {
+export interface SidebarConfiguration {
   label: string;
   icon: IconType;
   items: Array<SidebarItemProps>;
 }
 
-interface SidebarItemProps {
+interface SidebarItem {
   label: string;
   icon: IconType;
   link: string;
