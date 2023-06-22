@@ -2,7 +2,6 @@ import { BoxProps, Flex, CloseButton, Box, Text, Icon, Divider } from '@chakra-u
 import { sidebarData } from '@/config/sidebar.config';
 import { AiOutlineHome } from 'react-icons/ai';
 
-import NavItem from '../NavItem/NavItem';
 import SidebarItem from '../SidebarItem/SidebarItem';
 
 interface SidebarProps extends BoxProps {
