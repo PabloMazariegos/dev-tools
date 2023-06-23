@@ -1,5 +1,13 @@
 import DefaultLayout from '@/layouts/DefaultLayout';
-import Home from '@/views/home/Home';
+import HomeView from '@/views/home/HomeView';
+import Base64ImageView from '@/views/encoders-decoders/Base64ImageView';
+import Base64TextView from '@/views/encoders-decoders/Base64TextView';
+import UuidView from '@/views/generators/UuidView';
+import SqlScriptsView from '@/views/generators/SqlScriptsView';
+import BcryptView from '@/views/generators/BcryptView';
+import JavaToJsonView from '@/views/converters/JavaToJsonView';
+import RegexTesterView from '@/views/text/RegexTesterView';
+
 import { Navigate, createBrowserRouter } from 'react-router-dom';
 
 const router = createBrowserRouter([
@@ -10,18 +18,18 @@ const router = createBrowserRouter([
       {
         index: true,
         path: '',
-        element: <Home />
+        element: <HomeView />
       },
       {
         path: 'encoders',
         children: [
           {
             path: 'base64-text',
-            element: <h1>BASE64 TEXT</h1>
+            element: <Base64ImageView />
           },
           {
             path: 'base64-image',
-            element: <h1>BASE64 IMAGE</h1>
+            element: <Base64TextView />
           }
         ]
       },
@@ -30,15 +38,15 @@ const router = createBrowserRouter([
         children: [
           {
             path: 'uuid',
-            element: <h1>UUID</h1>
+            element: <UuidView />
           },
           {
             path: 'sql',
-            element: <h1>SQL</h1>
+            element: <SqlScriptsView />
           },
           {
             path: 'bcrypt',
-            element: <h1>BCRYPT</h1>
+            element: <BcryptView />
           }
         ]
       },
@@ -47,7 +55,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: 'java-json',
-            element: <h1>JAVA JSON</h1>
+            element: <JavaToJsonView />
           }
         ]
       },
@@ -56,7 +64,7 @@ const router = createBrowserRouter([
         children: [
           {
             path: 'regex-tester',
-            element: <h1>REGEX TESTER</h1>
+            element: <RegexTesterView />
           }
         ]
       },

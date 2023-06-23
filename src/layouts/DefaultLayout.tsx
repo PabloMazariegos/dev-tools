@@ -1,4 +1,4 @@
-import { Box, useDisclosure } from '@chakra-ui/react';
+import { Box, Container, useDisclosure } from '@chakra-ui/react';
 
 import SidebarContent from '@/components/SidebarContent/SidebarContent';
 import MobileNav from '@/components/MobileNav/MobileNav';
@@ -13,8 +13,10 @@ const DefaultLayout = () => {
       <SidebarContent onClose={onClose} display={{ base: 'none', md: 'block' }} />
       <MobileDrawer isOpen={isOpen} onClose={onClose} />
       <MobileNav display={{ base: 'flex', md: 'none' }} onOpen={onOpen} />
-      <Box ml={{ base: 0, md: '80' }} p='4'>
-        <Outlet />
+      <Box ml={{ base: 0, md: '80' }} paddingTop='10'>
+        <Container maxW='container.xl'>
+          <Outlet />
+        </Container>
       </Box>
     </Box>
   );

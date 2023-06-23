@@ -35,7 +35,7 @@ const SidebarContent = ({ onClose, ...BoxProps }: SidebarProps) => {
       <Divider />
 
       {sidebarData.map((category) => (
-        <Box>
+        <Box key={category.label}>
           <Flex alignItems='center' gap='2' paddingLeft='6' paddingBottom='1' marginTop='4'>
             <Icon as={category.icon} />
             <Text fontSize='md' fontWeight='bold'>

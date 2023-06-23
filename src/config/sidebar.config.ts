@@ -18,12 +18,14 @@ export const sidebarData: Array<SidebarConfiguration> = [
       {
         label: 'Base64 Text',
         icon: BsFileEarmarkText,
-        link: '/encoders/base64-text'
+        link: '/encoders/base64-text',
+        description: 'Encode and decode base64 to plain text.'
       },
       {
         label: 'Base64 Image',
         icon: BsImage,
-        link: '/encoders/base64-image'
+        link: '/encoders/base64-image',
+        description: 'Encode and decode base64 to image.'
       }
     ]
   },
@@ -34,17 +36,20 @@ export const sidebarData: Array<SidebarConfiguration> = [
       {
         label: 'UUID',
         icon: VscSymbolKeyword,
-        link: '/generators/uuid'
+        link: '/generators/uuid',
+        description: 'Generate UUID v4.'
       },
       {
         label: 'SQL Scripts',
         icon: BsFiletypeSql,
-        link: '/generators/sql'
+        link: '/generators/sql',
+        description: 'Generate SQL Scripts like insert, update, delete of any table or use the presets.'
       },
       {
         label: 'Bcrypt',
         icon: LuFingerprint,
-        link: '/generators/bcrypt'
+        link: '/generators/bcrypt',
+        description: 'Encrypt your data with Bcrypt hashing.'
       }
     ]
   },
@@ -55,7 +60,8 @@ export const sidebarData: Array<SidebarConfiguration> = [
       {
         label: 'Java Class <> JSON ',
         icon: VscJson,
-        link: '/converters/java-json'
+        link: '/converters/java-json',
+        description: 'Transform your Java class to a JSON specially to build payloads or transform your JSON to map a new Java class.'
       }
     ]
   },
@@ -66,7 +72,8 @@ export const sidebarData: Array<SidebarConfiguration> = [
       {
         label: 'RegEx Tester',
         icon: BsRegex,
-        link: '/text/regex-tester'
+        link: '/text/regex-tester',
+        description: 'Test your RegEx with sample text.'
       }
     ]
   }
