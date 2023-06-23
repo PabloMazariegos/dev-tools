@@ -1,4 +1,4 @@
-import { SidebarItem } from '@/@types/sidebar';
+import { SidebarItem } from '@/types/';
 import { sidebarData } from '@/config/sidebar.config';
 import { Card, CardBody, CardHeader, Center, Heading, Icon, Link, SimpleGrid, Text } from '@chakra-ui/react';
 import { NavLink } from 'react-router-dom';

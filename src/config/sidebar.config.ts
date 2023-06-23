@@ -8,7 +8,7 @@ import {
   BsInputCursorText
 } from 'react-icons/bs';
 import { VscJson, VscSymbolKeyword } from 'react-icons/vsc';
-import { SidebarConfiguration } from '@/@types/sidebar';
+import { SidebarConfiguration } from '@/types/';
 
 export const sidebarData: Array<SidebarConfiguration> = [
   {

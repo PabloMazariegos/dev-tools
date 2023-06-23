@@ -25,11 +25,11 @@ const router = createBrowserRouter([
         children: [
           {
             path: 'base64-text',
-            element: <Base64ImageView />
+            element: <Base64TextView />
           },
           {
             path: 'base64-image',
-            element: <Base64TextView />
+            element: <Base64ImageView />
           }
         ]
       },
