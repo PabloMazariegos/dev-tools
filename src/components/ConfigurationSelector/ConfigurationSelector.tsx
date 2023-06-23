@@ -2,16 +2,23 @@ import { Box, Card, CardBody, Flex, Icon, Select, Text } from '@chakra-ui/react'
 import { IconType } from 'react-icons';
 import { Configurator } from '@/types/configurator-selector';
 
-type ConfigurationSelectorProps = {
+interface ConfigurationSelectorProps {
   icon: IconType;
   label: string;
   hint?: string;
   options: Configurator;
   onChange: (value: React.ChangeEvent<HTMLSelectElement>) => void;
   value: string;
-};
+}
 
-const ConfigurationSelector = ({ icon, label, options, hint, onChange, value }: ConfigurationSelectorProps) => {
+const ConfigurationSelector: React.FC<ConfigurationSelectorProps> = ({
+  icon,
+  label,
+  options,
+  hint,
+  onChange,
+  value
+}) => {
   return (
     <Card>
       <CardBody>
