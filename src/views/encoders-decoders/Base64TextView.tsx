@@ -1,37 +1,24 @@
-import React from 'react';
 import ConfigurationSelector from '@/components/ConfigurationSelector/ConfigurationSelector';
 import { Heading } from '@chakra-ui/react';
 import { HiArrowsRightLeft } from 'react-icons/hi2';
-import { ConfiguratorSelectorValue } from '@/types/';
-import { EncodeDecodeConfiguration } from '@/config/encode-decode.config';
-
-const { DECODE } = ConfiguratorSelectorValue;
+import { encodeDecodeConfiguratorItems } from '@/config/configurator-selector.config';
+import useConfigurator from '@/hooks/useConfigurator.hook';
+import { EncodeDecode } from '@/types/configurator-selector';
 
 const base64TextView = () => {
-  const [configuration, setConfiguration] = React.useState<ConfiguratorSelectorValue>(DECODE);
-
-  const handleOnChange = (value: string) => {
-    const valueEnum = value as keyof typeof ConfiguratorSelectorValue;
-    const configurationValue = ConfiguratorSelectorValue[valueEnum];
-
-    if (!configurationValue) {
-      return;
-    }
-
-    setConfiguration(configurationValue);
-  };
+  const [configuration, handleOnChange] = useConfigurator<EncodeDecode>('DECODE');
 
   return (
     <>
       <Heading size='xl' marginBottom='8'>
-        Encode and decode Base64 to plain text
+        Base64 to plain text {configuration}
       </Heading>
 
       <ConfigurationSelector
         icon={HiArrowsRightLeft}
         label='Configuration'
         hint='Select the conversion mode'
-        options={EncodeDecodeConfiguration}
+        options={encodeDecodeConfiguratorItems}
         onChange={handleOnChange}
         value={configuration}
       />

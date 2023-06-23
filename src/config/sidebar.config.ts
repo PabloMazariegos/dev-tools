@@ -8,9 +8,9 @@ import {
   BsInputCursorText
 } from 'react-icons/bs';
 import { VscJson, VscSymbolKeyword } from 'react-icons/vsc';
-import { SidebarConfiguration } from '@/types/';
+import { Sidebar } from '@/types/sidebar';
 
-export const sidebarData: Array<SidebarConfiguration> = [
+export const sidebarData: Sidebar = [
   {
     label: 'Encoders / Decoders',
     icon: LuBinary,
@@ -61,7 +61,8 @@ export const sidebarData: Array<SidebarConfiguration> = [
         label: 'Java Class <> JSON ',
         icon: VscJson,
         link: '/converters/java-json',
-        description: 'Transform your Java class to a JSON specially to build payloads or transform your JSON to map a new Java class.'
+        description:
+          'Transform your Java class to a JSON specially to build payloads or transform your JSON to map a new Java class.'
       }
     ]
   },
