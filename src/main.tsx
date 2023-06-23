@@ -7,7 +7,7 @@ import theme from './config/theme.config.tsx';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <ChakraProvider resetCSS theme={theme}>
+    <ChakraProvider resetCSS theme={theme} >
       <App />
     </ChakraProvider>
   </React.StrictMode>
