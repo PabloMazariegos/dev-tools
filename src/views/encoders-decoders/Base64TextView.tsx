@@ -22,7 +22,7 @@ const base64TextView = () => {
         size='xl'
         marginBottom='8'
       >
-        Base64 to plain text {configuration}
+        Base64 to plain text
       </Heading>
 
       <ConfigurationSelector

@@ -48,7 +48,6 @@ const ConfigurationSelector: React.FC<ConfigurationSelectorProps> = ({
             value={value}
             onChange={onChange}
           >
-            <option value='test'>option</option>
             {options.map((option) => (
               <option
                 key={option.key}
