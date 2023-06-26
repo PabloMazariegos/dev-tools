@@ -26,47 +26,50 @@ const TextAreaViewer: React.FC<TextAreaProps> = ({
     headingText: type === 'INPUT' ? 'Input' : 'Output',
     buttonTypeText: type === 'INPUT' ? 'Paste' : 'Copy',
     buttonIcon: type === 'INPUT' ? BiPaste : AiOutlineCopy,
-    areaFontFamily: monospaceFont ? `'JetBrains Mono', monospace` : 'inherit';
-    
-  }
-  
+    areaFontFamily: monospaceFont ? `'JetBrains Mono', monospace` : 'inherit'
+  };
+
   const handleOnChange = (event: string) => {
-    if(onChange){
-      onChange(event)
+    if (onChange) {
+      onChange(event);
     }
-  }
+  };
 
   const handleOnCopyPaste = () => {
-    if(onCopyPasteClick){
-      onCopyPasteClick()
+    if (onCopyPasteClick) {
+      onCopyPasteClick();
     }
-  }
+  };
 
   return (
     <SimpleGrid columns={1} spacing={2}>
       <Flex alignItems='center' justifyContent='space-between' width='100%'>
-      <Text>{toolbarConfiguration.headingText}</Text>
+        <Text>{toolbarConfiguration.headingText}</Text>
 
-      <Flex alignItems='center' gap={2}>
-        <Button onClick={handleOnCopyPaste} leftIcon={<Icon as={toolbarConfiguration.buttonIcon} boxSize='5' />} fontSize='xs'>
-          {toolbarConfiguration.buttonTypeText}
-        </Button>
+        <Flex alignItems='center' gap={2}>
+          <Button
+            onClick={handleOnCopyPaste}
+            leftIcon={<Icon as={toolbarConfiguration.buttonIcon} boxSize='5' />}
+            fontSize='xs'
+          >
+            {toolbarConfiguration.buttonTypeText}
+          </Button>
 
-        {type === 'INPUT' && (
-          <IconButton
-            onClick={onDeleteClick}
-            aria-label='delete'
-            icon={<Icon as={AiOutlineClose} boxSize='5' />}
-          />
-        )}
+          {type === 'INPUT' && (
+            <IconButton
+              onClick={onDeleteClick}
+              aria-label='delete'
+              icon={<Icon as={AiOutlineClose} boxSize='5' />}
+            />
+          )}
+        </Flex>
       </Flex>
-    </Flex>
       <Box>
         <Textarea
           fontFamily={toolbarConfiguration.areaFontFamily}
           fontSize='sm'
           minHeight='36'
-          onChange={event => handleOnChange(event.target.value)}
+          onChange={(event) => handleOnChange(event.target.value)}
           value={content}
         ></Textarea>
       </Box>
