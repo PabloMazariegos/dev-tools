@@ -20,5 +20,9 @@ const styles = {
   }
 }
 
-const theme = extendTheme({config, styles})
+const fonts = {
+  body: `'Inter', sans-serif`
+}
+
+const theme = extendTheme({config, styles, fonts})
 export default theme;
