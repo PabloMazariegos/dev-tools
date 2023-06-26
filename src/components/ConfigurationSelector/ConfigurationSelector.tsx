@@ -1,4 +1,4 @@
-import { Box, Card, CardBody, Flex, Icon, Select, Text } from '@chakra-ui/react';
+import { Box, Card, CardBody, Flex, Icon, Select, Spacer, Text } from '@chakra-ui/react';
 import { IconType } from 'react-icons';
 import { ConfiguratorItem, ConfiguratorItemValue } from '@/types/configurator-selector';
 
@@ -22,37 +22,21 @@ const ConfigurationSelector: React.FC<ConfigurationSelectorProps> = ({
   return (
     <Card>
       <CardBody>
-        <Flex justifyContent='space-between'>
+        <Flex flexWrap='wrap' gap={5}>
           <Box>
-            <Flex
-              alignItems='center'
-              gap='3'
-            >
-              <Icon
-                as={icon}
-                boxSize='5'
-              ></Icon>
+            <Flex alignItems='center' gap='3'>
+              <Icon as={icon} boxSize='5'></Icon>
               <Text>{label}</Text>
             </Flex>
-            <Text
-              fontSize='xs'
-              color='gray.400'
-              marginLeft='8'
-            >
+            <Text fontSize='xs' color='gray.400' marginLeft='8'>
               {hint}
             </Text>
           </Box>
+          <Spacer />
 
-          <Select
-            maxWidth='32'
-            value={value}
-            onChange={onChange}
-          >
+          <Select maxWidth={{base: '100%', md: '32'}} value={value} onChange={onChange}>
             {options.map((option) => (
-              <option
-                key={option.key}
-                value={option.value}
-              >
+              <option key={option.key} value={option.value}>
                 {option.key}
               </option>
             ))}
