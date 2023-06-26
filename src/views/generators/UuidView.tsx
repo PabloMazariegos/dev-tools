@@ -22,7 +22,7 @@ const UuidView = () => {
   const [isUpperCase, setIsUpperCase] = React.useState<boolean>(false);
   const [totalUuids, setTotalUuids] = React.useState<number>(1);
   const [textAreaOutput, setTextAreaOuput] = React.useState<string>('');
-  const {onCopy} = useClipboard()
+  const { onCopy } = useClipboard();
 
   React.useEffect(() => {
     if (textAreaOutput.length > 0) {
@@ -57,7 +57,7 @@ const UuidView = () => {
   };
 
   const handleOnCopyClick = async () => {
-    onCopy(textAreaOutput)
+    onCopy(textAreaOutput);
   };
 
   return (
