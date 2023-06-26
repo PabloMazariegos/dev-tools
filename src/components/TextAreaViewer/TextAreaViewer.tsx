@@ -1,8 +1,18 @@
 import React from 'react';
 import { Box, Button, Flex, Icon, IconButton, SimpleGrid, Textarea, Text } from '@chakra-ui/react';
-import { TextAreaProps } from '@/types/text-area';
 import { AiOutlineClose, AiOutlineCopy } from 'react-icons/ai';
 import { BiPaste } from 'react-icons/bi';
+
+export type TextAreaType = 'INPUT' | 'OUTPUT';
+
+export interface TextAreaProps {
+  type: TextAreaType;
+  monospaceFont?: boolean;
+  content?: string;
+  onChange?: (value: string) => void;
+  onDeleteClick?: () => void;
+  onCopyPasteClick?: () => void;
+}
 
 const TextAreaViewer: React.FC<TextAreaProps> = ({
   type,
@@ -12,11 +22,14 @@ const TextAreaViewer: React.FC<TextAreaProps> = ({
   onDeleteClick,
   onCopyPasteClick
 }) => {
-  const headingText = type === 'INPUT' ? 'Input' : 'Output';
-  const buttonTypeText = type === 'INPUT' ? 'Paste' : 'Copy';
-  const buttonIcon = type === 'INPUT' ? BiPaste : AiOutlineCopy;
-  const areaFontFamily = monospaceFont ? `'JetBrains Mono', monospace` : 'inherit';
-
+  const toolbarConfiguration = {
+    headingText: type === 'INPUT' ? 'Input' : 'Output',
+    buttonTypeText: type === 'INPUT' ? 'Paste' : 'Copy',
+    buttonIcon: type === 'INPUT' ? BiPaste : AiOutlineCopy,
+    areaFontFamily: monospaceFont ? `'JetBrains Mono', monospace` : 'inherit';
+    
+  }
+  
   const handleOnChange = (event: string) => {
     if(onChange){
       onChange(event)
@@ -32,11 +45,11 @@ const TextAreaViewer: React.FC<TextAreaProps> = ({
   return (
     <SimpleGrid columns={1} spacing={2}>
       <Flex alignItems='center' justifyContent='space-between' width='100%'>
-      <Text>{headingText}</Text>
+      <Text>{toolbarConfiguration.headingText}</Text>
 
       <Flex alignItems='center' gap={2}>
-        <Button onClick={handleOnCopyPaste} leftIcon={<Icon as={buttonIcon} boxSize='5' />} fontSize='xs'>
-          {buttonTypeText}
+        <Button onClick={handleOnCopyPaste} leftIcon={<Icon as={toolbarConfiguration.buttonIcon} boxSize='5' />} fontSize='xs'>
+          {toolbarConfiguration.buttonTypeText}
         </Button>
 
         {type === 'INPUT' && (
@@ -50,7 +63,7 @@ const TextAreaViewer: React.FC<TextAreaProps> = ({
     </Flex>
       <Box>
         <Textarea
-          fontFamily={areaFontFamily}
+          fontFamily={toolbarConfiguration.areaFontFamily}
           fontSize='sm'
           minHeight='36'
           onChange={event => handleOnChange(event.target.value)}

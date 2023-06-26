@@ -14,18 +14,6 @@ const base64TextView = () => {
   const [textAreaInput, setTextAreaInput] = React.useState<string>('');
   const [textAreaOutput, setTextAreaOutput] = React.useState<string>('');
 
-  const handleConfigurationChange = (value: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedConfiguration = value.target.value as EncodeDecode;
-
-    const validSelectedConfiguration =
-      selectedConfiguration &&
-      (selectedConfiguration === 'ENCODE' || selectedConfiguration === 'DECODE');
-
-    if (validSelectedConfiguration) {
-      setConfiguration(selectedConfiguration);
-    }
-  };
-
   React.useEffect(() => {
     let output = '';
     switch (configuration) {
@@ -41,11 +29,22 @@ const base64TextView = () => {
     setTextAreaOutput(output);
   }, [textAreaInput, configuration]);
 
+  const handleConfigurationChange = (value: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedConfiguration = value.target.value as EncodeDecode;
+
+    const validSelectedConfiguration =
+      selectedConfiguration && (selectedConfiguration === 'ENCODE' || selectedConfiguration === 'DECODE');
+
+    if (validSelectedConfiguration) {
+      setConfiguration(selectedConfiguration);
+    }
+  };
+
   const handleTextAreaInputOnChange = (value: string) => {
     setTextAreaInput(value);
   };
 
-  const handlePasteClick = async () => {
+  const handleOnPasteClick = async () => {
     const clipboardText = await navigator.clipboard.readText();
 
     if (clipboardText) {
@@ -71,9 +70,7 @@ const base64TextView = () => {
   };
 
   const configurationHint =
-    configuration === 'DECODE'
-      ? 'Decode: Convert base64 to text'
-      : 'Encode: Convert text to base64';
+    configuration === 'DECODE' ? 'Decode: Convert base64 to text' : 'Encode: Convert text to base64';
 
   return (
     <>
@@ -96,8 +93,8 @@ const base64TextView = () => {
             type='INPUT'
             onChange={handleTextAreaInputOnChange}
             onDeleteClick={onDeleteClick}
+            onCopyPasteClick={handleOnPasteClick}
             content={textAreaInput}
-            onCopyPasteClick={handlePasteClick}
           ></TextAreaViewer>
         </Box>
         <Box>
