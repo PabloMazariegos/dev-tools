@@ -15,14 +15,14 @@ import {
   NumberInputStepper
 } from '@chakra-ui/react';
 import { RxLetterCaseUppercase } from 'react-icons/rx';
-import { useToast } from '@chakra-ui/react';
 import { v4 as uuidv4 } from 'uuid';
+import { useClipboard } from '@/hooks/useClipboard';
 
 const UuidView = () => {
-  const toast = useToast();
   const [isUpperCase, setIsUpperCase] = React.useState<boolean>(false);
   const [totalUuids, setTotalUuids] = React.useState<number>(1);
   const [textAreaOutput, setTextAreaOuput] = React.useState<string>('');
+  const {onCopy} = useClipboard()
 
   React.useEffect(() => {
     if (textAreaOutput.length > 0) {
@@ -57,16 +57,7 @@ const UuidView = () => {
   };
 
   const handleOnCopyClick = async () => {
-    navigator.clipboard.writeText(textAreaOutput);
-
-    toast({
-      title: 'Copied!',
-      description: 'UUID(s) output copied to clipboard',
-      status: 'success',
-      isClosable: true,
-      position: 'bottom-right',
-      duration: 4000
-    });
+    onCopy(textAreaOutput)
   };
 
   return (

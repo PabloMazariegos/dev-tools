@@ -6,13 +6,13 @@ import { HiArrowsRightLeft } from 'react-icons/hi2';
 import { encodeDecodeConfiguratorItems } from '@/config/configurator-selector.config';
 import { EncodeDecode } from '@/types/configurator-selector';
 import { encodeBase64, decodeBase64 } from '@/utils/base64.utils';
-import { useToast } from '@chakra-ui/react';
+import { useClipboard } from '@/hooks/useClipboard';
 
 const base64TextView = () => {
-  const toast = useToast();
   const [configuration, setConfiguration] = React.useState<EncodeDecode>('DECODE');
   const [textAreaInput, setTextAreaInput] = React.useState<string>('');
   const [textAreaOutput, setTextAreaOutput] = React.useState<string>('');
+  const { onCopy, onPaste } = useClipboard();
 
   React.useEffect(() => {
     let output = '';
@@ -42,24 +42,12 @@ const base64TextView = () => {
   };
 
   const handleOnPasteClick = async () => {
-    const clipboardText = await navigator.clipboard.readText();
-
-    if (clipboardText) {
-      setTextAreaInput(textAreaInput + clipboardText);
-    }
+    const pasteText = await onPaste();
+    setTextAreaInput(textAreaInput + pasteText);
   };
 
   const handleOnCopyClick = async () => {
-    navigator.clipboard.writeText(textAreaOutput);
-
-    toast({
-      title: 'Copied!',
-      description: 'Base64 output copied to clipboard',
-      status: 'success',
-      isClosable: true,
-      position: 'bottom-right',
-      duration: 4000
-    });
+    onCopy(textAreaOutput);
   };
 
   const onDeleteClick = () => {
