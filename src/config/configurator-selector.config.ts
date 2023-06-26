@@ -1,6 +1,6 @@
-import { type Configurator } from '@/types/configurator-selector';
+import { ConfiguratorItem } from '@/types/configurator-selector';
 
-export const encodeDecodeConfiguratorItems: Configurator = [
+export const encodeDecodeConfiguratorItems: ConfiguratorItem[] = [
   {
     key: 'Decode',
     value: 'DECODE'

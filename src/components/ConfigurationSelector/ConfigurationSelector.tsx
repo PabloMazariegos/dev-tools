@@ -1,5 +1,5 @@
 import { Box, Card, CardBody, Flex, Icon, Select, Spacer, Text } from '@chakra-ui/react';
-import { IconType } from 'react-icons';
+import { type IconType } from 'react-icons';
 import { ConfiguratorItem, ConfiguratorItemValue } from '@/types/configurator-selector';
 
 interface ConfigurationSelectorProps {

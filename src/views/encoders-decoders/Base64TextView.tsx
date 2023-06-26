@@ -32,10 +32,7 @@ const base64TextView = () => {
   const handleConfigurationChange = (value: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedConfiguration = value.target.value as EncodeDecode;
 
-    const validSelectedConfiguration =
-      selectedConfiguration && (selectedConfiguration === 'ENCODE' || selectedConfiguration === 'DECODE');
-
-    if (validSelectedConfiguration) {
+    if (selectedConfiguration) {
       setConfiguration(selectedConfiguration);
     }
   };
