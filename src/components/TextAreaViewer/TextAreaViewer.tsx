@@ -68,7 +68,7 @@ const TextAreaViewer: React.FC<TextAreaProps> = ({
         <Textarea
           fontFamily={toolbarConfiguration.areaFontFamily}
           fontSize='sm'
-          minHeight='36'
+          minHeight='52'
           onChange={(event) => handleOnChange(event.target.value)}
           value={content}
         ></Textarea>
