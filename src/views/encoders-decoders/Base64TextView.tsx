@@ -1,27 +1,25 @@
 import React from 'react';
 import TextAreaViewer from '@/components/TextAreaViewer/TextAreaViewer';
 import ConfigurationSelector from '@/components/ConfigurationSelector/ConfigurationSelector';
-
 import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
 import { HiArrowsRightLeft } from 'react-icons/hi2';
-
 import { encodeDecodeConfiguratorItems } from '@/config/configurator-selector.config';
 import { EncodeDecode } from '@/types/configurator-selector';
-
 import { encodeBase64, decodeBase64 } from '@/utils/base64.utils';
 
 const base64TextView = () => {
-  const [configuration, setConfiguration] = React.useState<EncodeDecode>('ENCODE');
+  const [configuration, setConfiguration] = React.useState<EncodeDecode>('DECODE');
   const [textAreaInput, setTextAreaInput] = React.useState<string>('');
   const [textAreaOutput, setTextAreaOutput] = React.useState<string>('');
 
   const handleConfigurationChange = (value: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedConfiguration = value.target.value as EncodeDecode;
 
-    if (
+    const validSelectedConfiguration =
       selectedConfiguration &&
-      (selectedConfiguration === 'ENCODE' || selectedConfiguration === 'DECODE')
-    ) {
+      (selectedConfiguration === 'ENCODE' || selectedConfiguration === 'DECODE');
+
+    if (validSelectedConfiguration) {
       setConfiguration(selectedConfiguration);
       clearTextAreas();
     }
@@ -44,10 +42,15 @@ const base64TextView = () => {
     setTextAreaOutput(output);
   };
 
+  const configurationHint =
+    configuration === 'DECODE'
+      ? 'Decode: Convert base64 to text'
+      : 'Encode: Convert text to base64';
+
   const clearTextAreas = () => {
-    setTextAreaInput('')
-    setTextAreaOutput('')
-  }
+    setTextAreaInput('');
+    setTextAreaOutput('');
+  };
 
   return (
     <>
@@ -59,7 +62,7 @@ const base64TextView = () => {
           <ConfigurationSelector
             icon={HiArrowsRightLeft}
             label='Configuration'
-            hint='Select the conversion mode'
+            hint={configurationHint}
             options={encodeDecodeConfiguratorItems}
             onChange={handleConfigurationChange}
             value={configuration}
