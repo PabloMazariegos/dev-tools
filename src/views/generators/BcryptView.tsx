@@ -14,7 +14,7 @@ import {
   SimpleGrid,
   Text
 } from '@chakra-ui/react';
-import bcryptjs from 'bcryptjs';
+import { hashSync } from 'bcrypt-ts/browser';
 import { useClipboard } from '@/hooks/useClipboard';
 
 const bcryptView = () => {
@@ -29,7 +29,7 @@ const bcryptView = () => {
 
   const generateBcrypt = () => {
     if (password) {
-      const hash = bcryptjs.hashSync(password, rounds);
+      const hash = hashSync(password, rounds);
       setTextAreaOuput(hash);
     }
   };
