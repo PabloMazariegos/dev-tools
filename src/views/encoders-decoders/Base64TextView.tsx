@@ -75,18 +75,21 @@ const base64TextView = () => {
         </Box>
         <Box>
           <TextAreaViewer
-            type='INPUT'
+            headingText='Input'
             onChange={handleTextAreaInputOnChange}
-            onDeleteClick={onDeleteClick}
-            onCopyPasteClick={handleOnPasteClick}
+            onDelete={onDeleteClick}
+            onPaste={handleOnPasteClick}
             content={textAreaInput}
+            pasteAction
+            deleteAction
           ></TextAreaViewer>
         </Box>
         <Box>
           <TextAreaViewer
-            type='OUTPUT'
+            copyAction
+            headingText='Output'
             content={textAreaOutput}
-            onCopyPasteClick={handleOnCopyClick}
+            onCopy={handleOnCopyClick}
           ></TextAreaViewer>
         </Box>
       </SimpleGrid>

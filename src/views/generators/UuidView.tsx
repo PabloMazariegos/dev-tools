@@ -91,7 +91,12 @@ const UuidView = () => {
           </Flex>
         </Box>
         <Box>
-          <TextAreaViewer type='OUTPUT' content={textAreaOutput} onCopyPasteClick={handleOnCopyClick} />
+          <TextAreaViewer
+            headingText='Output'
+            copyAction
+            content={textAreaOutput}
+            onCopy={handleOnCopyClick}
+          />
         </Box>
       </SimpleGrid>
     </>

@@ -1,41 +1,60 @@
 import TextAreaViewer from '@/components/TextAreaViewer/TextAreaViewer';
-import { Box, Flex, Heading, SimpleGrid, Text } from '@chakra-ui/react';
+import ImagePreview from '@/components/ImagePreview/ImagePreview';
+import DragZoneUploader from '@/components/DragZoneUploader/DragZoneUploader';
+import { useClipboard } from '@/hooks/useClipboard';
+import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
 import React from 'react';
+import { UploadedFiles } from '@/types/dragzone-uploader';
 
 const base64ImageView = () => {
-  const uploadFileInputRef = React.useRef<HTMLInputElement>(null);
-  const [dragZoneActive, setDragZoneActive] = React.useState(false);
+  const [textAreaInput, setTextAreaInput] = React.useState('');
+  const [imagePreview, setImagePreview] = React.useState('');
 
-  const handleBrowseFileClick = () => {
-    if (uploadFileInputRef && uploadFileInputRef.current) {
-      uploadFileInputRef.current.click();
+  const { onCopy, onPaste } = useClipboard();
+
+  React.useEffect(() => {
+    setImagePreview(textAreaInput);
+  }, [textAreaInput]);
+
+  const handleUpload = async (files: UploadedFiles) => {
+    const base64 = await convertFileToBase64(files);
+    if (base64) {
+      setTextAreaInput(base64.toString());
     }
   };
 
-  const handleDragEnterAndLeave = (event: React.DragEvent) => {
-    event.preventDefault();
-    event.stopPropagation();
-
-    if (event.type === 'dragenter') {
-      setDragZoneActive(true);
-    }
-
-    if (event.type === 'dragleave') {
-      setDragZoneActive(false);
-    }
-  };
-
-  const handleDropFile = (event: React.DragEvent) => {
-    event.preventDefault();
-    event.stopPropagation();
-
-    setDragZoneActive(false);
-    const files = [...event.dataTransfer.files];
-
+  const convertFileToBase64 = (files: File[] | FileList | null) => {
     if (files && files.length > 0) {
       const existingFile = files[0];
-      console.log(existingFile);
+
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(existingFile);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+      });
     }
+  };
+
+  const handleOnCopy = () => {
+    if (textAreaInput) {
+      onCopy(textAreaInput);
+    }
+  };
+
+  const handleOnPaste = async () => {
+    const clipboardText = await onPaste();
+    if (clipboardText) {
+      setTextAreaInput(clipboardText);
+    }
+  };
+
+  const handleOnDelete = () => {
+    setTextAreaInput('');
+  };
+
+  const handleOnChange = (value: string) => {
+    setTextAreaInput(value);
   };
 
   return (
@@ -45,39 +64,19 @@ const base64ImageView = () => {
           Base64 to image
         </Heading>
       </Box>
-      <Flex direction='column' gap={3}>
-        <Text>Image upload</Text>
-        <input type='file' ref={uploadFileInputRef} style={{ display: 'none' }} />
-        <Flex
-          direction='column'
-          alignItems='center'
-          justifyContent='center'
-          width='full'
-          border='1px'
-          borderStyle='dashed'
-          borderColor='gray.400'
-          minHeight='40'
-          gap={3}
-          onDragOver={handleDragEnterAndLeave}
-          onDragEnter={handleDragEnterAndLeave}
-          onDragLeave={handleDragEnterAndLeave}
-          onDrop={handleDropFile}
-          draggable='true'
-          backgroundColor={dragZoneActive ? 'blue.900' : 'inherit'}
-        >
-          <Text fontSize='sm'>Drag and drop a PNG, JPG, JPEG file here</Text>
-          <Text fontSize='sm'>or</Text>
-          <Text fontSize='sm' color='blue.400' cursor='pointer' onClick={handleBrowseFileClick}>
-            Browse file
-          </Text>
-        </Flex>
-      </Flex>
+      <DragZoneUploader onUpload={handleUpload} />
       <Box>
-        <TextAreaViewer type='INPUT' />
+        <TextAreaViewer
+          headingText='Base64'
+          content={textAreaInput}
+          allActions
+          onCopy={handleOnCopy}
+          onPaste={handleOnPaste}
+          onDelete={handleOnDelete}
+          onChange={handleOnChange}
+        />
       </Box>
-      <Box>
-        <TextAreaViewer type='OUTPUT' />
-      </Box>
+      <ImagePreview src={imagePreview} />
     </SimpleGrid>
   );
 };

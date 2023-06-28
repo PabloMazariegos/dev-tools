@@ -3,29 +3,36 @@ import { Box, Button, Flex, Icon, IconButton, SimpleGrid, Textarea, Text } from 
 import { AiOutlineClose, AiOutlineCopy } from 'react-icons/ai';
 import { BiPaste } from 'react-icons/bi';
 
-export type TextAreaType = 'INPUT' | 'OUTPUT';
+type ButtonActions = 'COPY' | 'PASTE';
 
-export interface TextAreaProps {
-  type: TextAreaType;
+interface TextAreaProps {
   monospaceFont?: boolean;
   content?: string;
   onChange?: (value: string) => void;
-  onDeleteClick?: () => void;
-  onCopyPasteClick?: () => void;
+  onCopy?: () => void;
+  onPaste?: () => void;
+  onDelete?: () => void;
+  allActions?: boolean;
+  copyAction?: boolean;
+  pasteAction?: boolean;
+  deleteAction?: boolean;
+  headingText: string;
 }
 
 const TextAreaViewer: React.FC<TextAreaProps> = ({
-  type,
   monospaceFont = true,
   content,
   onChange,
-  onDeleteClick,
-  onCopyPasteClick
+  onDelete,
+  onCopy,
+  onPaste,
+  allActions,
+  copyAction,
+  pasteAction,
+  deleteAction,
+  headingText
 }) => {
   const toolbarConfiguration = {
-    headingText: type === 'INPUT' ? 'Input' : 'Output',
-    buttonTypeText: type === 'INPUT' ? 'Paste' : 'Copy',
-    buttonIcon: type === 'INPUT' ? BiPaste : AiOutlineCopy,
     areaFontFamily: monospaceFont ? `'JetBrains Mono', monospace` : 'inherit'
   };
 
@@ -35,33 +42,36 @@ const TextAreaViewer: React.FC<TextAreaProps> = ({
     }
   };
 
-  const handleOnCopyPaste = () => {
-    if (onCopyPasteClick) {
-      onCopyPasteClick();
-    }
-  };
+  const clipboardButton = (type: ButtonActions) => (
+    <Button
+      key={type}
+      onClick={type === 'COPY' ? onCopy : onPaste}
+      leftIcon={<Icon as={type === 'COPY' ? AiOutlineCopy : BiPaste} boxSize='5' />}
+      fontSize='xs'
+    >
+      {type === 'COPY' ? 'Copy' : 'Paste'}
+    </Button>
+  );
+
+  const deleteButton = () => (
+    <IconButton
+      key='delete'
+      onClick={onDelete}
+      aria-label='delete'
+      icon={<Icon as={AiOutlineClose} boxSize='5' />}
+    />
+  );
 
   return (
     <SimpleGrid columns={1} spacing={2}>
       <Flex alignItems='center' justifyContent='space-between' width='100%'>
-        <Text>{toolbarConfiguration.headingText}</Text>
+        <Text>{headingText}</Text>
 
         <Flex alignItems='center' gap={2}>
-          <Button
-            onClick={handleOnCopyPaste}
-            leftIcon={<Icon as={toolbarConfiguration.buttonIcon} boxSize='5' />}
-            fontSize='xs'
-          >
-            {toolbarConfiguration.buttonTypeText}
-          </Button>
-
-          {type === 'INPUT' && (
-            <IconButton
-              onClick={onDeleteClick}
-              aria-label='delete'
-              icon={<Icon as={AiOutlineClose} boxSize='5' />}
-            />
-          )}
+          {allActions && [clipboardButton('COPY'), clipboardButton('PASTE'), deleteButton()]}
+          {copyAction && clipboardButton('COPY')}
+          {pasteAction && clipboardButton('PASTE')}
+          {deleteAction && deleteButton()}
         </Flex>
       </Flex>
       <Box>
