@@ -40,16 +40,16 @@ export const sidebarData: Sidebar = [
         description: 'Generate UUID v4.'
       },
       {
-        label: 'SQL Scripts',
-        icon: BsFiletypeSql,
-        link: '/generators/sql',
-        description: 'Generate SQL Scripts like insert, update, delete of any table or use the presets.'
-      },
-      {
         label: 'Bcrypt',
         icon: LuFingerprint,
         link: '/generators/bcrypt',
         description: 'Encrypt your data with Bcrypt hashing.'
+      },
+      {
+        label: 'SQL Scripts',
+        icon: BsFiletypeSql,
+        link: '/generators/sql',
+        description: 'Generate SQL Scripts like insert, update, delete of any table or use the presets.'
       }
     ]
   },

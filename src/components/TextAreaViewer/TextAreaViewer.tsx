@@ -1,11 +1,21 @@
 import React from 'react';
-import { Box, Button, Flex, Icon, IconButton, SimpleGrid, Textarea, Text } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Flex,
+  Icon,
+  IconButton,
+  SimpleGrid,
+  Textarea,
+  Text,
+  StyleProps
+} from '@chakra-ui/react';
 import { AiOutlineClose, AiOutlineCopy } from 'react-icons/ai';
 import { BiPaste } from 'react-icons/bi';
 
 type ButtonActions = 'COPY' | 'PASTE';
 
-interface TextAreaProps {
+interface TextAreaProps extends StyleProps {
   monospaceFont?: boolean;
   content?: string;
   onChange?: (value: string) => void;
@@ -30,7 +40,8 @@ const TextAreaViewer: React.FC<TextAreaProps> = ({
   copyAction,
   pasteAction,
   deleteAction,
-  headingText
+  headingText,
+  ...styleProps
 }) => {
   const toolbarConfiguration = {
     areaFontFamily: monospaceFont ? `'JetBrains Mono', monospace` : 'inherit'
@@ -81,6 +92,7 @@ const TextAreaViewer: React.FC<TextAreaProps> = ({
           minHeight='52'
           onChange={(event) => handleOnChange(event.target.value)}
           value={content}
+          {...styleProps}
         ></Textarea>
       </Box>
     </SimpleGrid>
