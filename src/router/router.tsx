@@ -1,6 +1,6 @@
 import DefaultLayout from '@/layouts/DefaultLayout';
 import HomeView from '@/views/home/HomeView';
-import Base64ImageView from '@/views/encoders-decoders/Base64ImageView';
+import Base64ImageView from '@/views/encoders-decoders/Base64FileView';
 import Base64TextView from '@/views/encoders-decoders/Base64TextView';
 import UuidView from '@/views/generators/UuidView';
 import SqlScriptsView from '@/views/generators/SqlScriptsView';

@@ -22,10 +22,10 @@ export const sidebarData: Sidebar = [
         description: 'Encode and decode base64 to plain text.'
       },
       {
-        label: 'Base64 Image',
+        label: 'Base64 File',
         icon: BsImage,
-        link: '/encoders/base64-image',
-        description: 'Encode and decode base64 to image.'
+        link: '/encoders/base64-file',
+        description: 'Encode and decode base64 to file.'
       }
     ]
   },

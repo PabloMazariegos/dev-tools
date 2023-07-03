@@ -50,8 +50,14 @@ const dragZoneUploader: React.FC<DragZoneUploaderProps> = ({ onUpload }) => {
 
   return (
     <Flex direction='column' gap={3}>
-      <Text>Image upload</Text>
-      <input type='file' ref={uploadFileInputRef} style={{ display: 'none' }} onChange={handleBrowseFile} />
+      <Text>Upload</Text>
+      <input
+        type='file'
+        multiple={false}
+        ref={uploadFileInputRef}
+        style={{ display: 'none' }}
+        onChange={handleBrowseFile}
+      />
       <Flex
         direction='column'
         alignItems='center'
@@ -69,7 +75,7 @@ const dragZoneUploader: React.FC<DragZoneUploaderProps> = ({ onUpload }) => {
         draggable='true'
         backgroundColor={dragZoneActive ? 'blue.900' : 'inherit'}
       >
-        <Text fontSize='sm'>Drag and drop a PNG, JPG, JPEG file here</Text>
+        <Text fontSize='sm'>Drag and drop an image or file here</Text>
         <Text fontSize='sm'>or</Text>
         <Text fontSize='sm' color='blue.400' cursor='pointer' onClick={handleBrowseFileClick}>
           Browse file

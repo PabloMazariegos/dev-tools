@@ -6,13 +6,28 @@ import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
 import React from 'react';
 import { UploadedFiles } from '@/types/dragzone-uploader';
 
-const base64ImageView = () => {
+const base64FileView = () => {
+  const imageMimeTypes = ['image/jpeg', 'image/png', 'image/svg+xml', 'image/tiff', 'image/webp'];
+
   const [textAreaInput, setTextAreaInput] = React.useState('');
   const [imagePreview, setImagePreview] = React.useState('');
+  const [showImagePreview, setShowImagePreview] = React.useState(false);
 
   const { onCopy, onPaste } = useClipboard();
 
   React.useEffect(() => {
+    const dataType = textAreaInput.split(';');
+
+    if (dataType && dataType.length > 0) {
+      const mimeType = dataType[0].split(':');
+
+      if (mimeType && mimeType.length > 0) {
+        const uploadedMimeType = mimeType[1];
+        const isImage = imageMimeTypes.includes(uploadedMimeType);
+        setShowImagePreview(isImage);
+      }
+    }
+
     setImagePreview(textAreaInput);
   }, [textAreaInput]);
 
@@ -51,6 +66,8 @@ const base64ImageView = () => {
 
   const handleOnDelete = () => {
     setTextAreaInput('');
+    setImagePreview('');
+    setShowImagePreview(false);
   };
 
   const handleOnChange = (value: string) => {
@@ -61,7 +78,7 @@ const base64ImageView = () => {
     <SimpleGrid columns={1} spacing={10}>
       <Box>
         <Heading size='xl' marginBottom='8'>
-          Base64 to image
+          Base64 to file
         </Heading>
       </Box>
       <DragZoneUploader onUpload={handleUpload} />
@@ -76,9 +93,9 @@ const base64ImageView = () => {
           onChange={handleOnChange}
         />
       </Box>
-      <ImagePreview src={imagePreview} />
+      {showImagePreview && <ImagePreview src={imagePreview} />}
     </SimpleGrid>
   );
 };
 
-export default base64ImageView;
+export default base64FileView;
