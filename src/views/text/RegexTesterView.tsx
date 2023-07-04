@@ -70,6 +70,10 @@ const regexTester = () => {
     setTextAreaValue(value);
   };
 
+  const handleOnDeleteTextArea = () => {
+    setTextAreaValue('');
+  }
+
   const highlightTag = ({ children }: HighlightTag) => (
     <Tag colorScheme='green' size='md'>
       {children}
@@ -97,6 +101,7 @@ const regexTester = () => {
           deleteAction
           content={textAreaInput}
           onChange={handleOnTextAreaChange}
+          onDelete={handleOnDeleteTextArea}
           minHeight='32'
         />
       </Box>
