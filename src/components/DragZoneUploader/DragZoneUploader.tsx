@@ -6,7 +6,7 @@ interface DragZoneUploaderProps {
   onUpload: (value: UploadedFiles) => void;
 }
 
-const dragZoneUploader: React.FC<DragZoneUploaderProps> = ({ onUpload }) => {
+const dragZoneUploader = ({ onUpload }: DragZoneUploaderProps) => {
   const [dragZoneActive, setDragZoneActive] = React.useState(false);
   const uploadFileInputRef = React.useRef<HTMLInputElement>(null);
 

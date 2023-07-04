@@ -8,7 +8,7 @@ interface SidebarItemProps extends FlexProps {
   link: string;
 }
 
-const SidebarItem: React.FC<SidebarItemProps> = ({ icon, label, link, paddingLeft }) => {
+const SidebarItem = ({ icon, label, link, paddingLeft }: SidebarItemProps) => {
   return (
     <Link
       as={NavLink}

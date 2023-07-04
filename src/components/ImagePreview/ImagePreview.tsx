@@ -4,7 +4,7 @@ interface ImagePreviewProps {
   src: string;
 }
 
-const imagePreview: React.FC<ImagePreviewProps> = ({ src }) => {
+const imagePreview = ({ src }: ImagePreviewProps) => {
   return (
     <Flex direction='column' gap={3} justifyContent='center'>
       <Text>Image preview</Text>

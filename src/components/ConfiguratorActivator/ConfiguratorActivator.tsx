@@ -8,7 +8,7 @@ interface ConfiguratorActivatorProps {
   onChange: (value: boolean) => void;
 }
 
-const ConfiguratorActivator: React.FC<ConfiguratorActivatorProps> = ({ icon, label, value, onChange }) => {
+const ConfiguratorActivator = ({ icon, label, value, onChange }:ConfiguratorActivatorProps) => {
   return (
     <Card>
       <CardBody>

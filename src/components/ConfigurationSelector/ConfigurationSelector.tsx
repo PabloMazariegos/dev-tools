@@ -11,14 +11,14 @@ interface ConfigurationSelectorProps {
   value: ConfiguratorItemValue;
 }
 
-const ConfigurationSelector: React.FC<ConfigurationSelectorProps> = ({
+const ConfigurationSelector = ({
   icon,
   label,
   options,
   hint,
   onChange,
   value
-}) => {
+}: ConfigurationSelectorProps) => {
   return (
     <Card>
       <CardBody>
@@ -34,7 +34,7 @@ const ConfigurationSelector: React.FC<ConfigurationSelectorProps> = ({
           </Box>
           <Spacer />
 
-          <Select maxWidth={{base: '100%', md: '32'}} value={value} onChange={onChange}>
+          <Select maxWidth={{ base: '100%', md: '32' }} value={value} onChange={onChange}>
             {options.map((option) => (
               <option key={option.key} value={option.value}>
                 {option.key}

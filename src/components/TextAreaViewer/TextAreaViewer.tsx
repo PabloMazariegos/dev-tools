@@ -29,7 +29,7 @@ interface TextAreaProps extends StyleProps {
   headingText: string;
 }
 
-const TextAreaViewer: React.FC<TextAreaProps> = ({
+const TextAreaViewer = ({
   monospaceFont = true,
   content,
   onChange,
@@ -42,7 +42,7 @@ const TextAreaViewer: React.FC<TextAreaProps> = ({
   deleteAction,
   headingText,
   ...styleProps
-}) => {
+}: TextAreaProps) => {
   const toolbarConfiguration = {
     areaFontFamily: monospaceFont ? `'JetBrains Mono', monospace` : 'inherit'
   };
