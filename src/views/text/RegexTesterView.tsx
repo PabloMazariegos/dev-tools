@@ -22,8 +22,6 @@ const regexTester = () => {
   const [textAreaInput, setTextAreaValue] = React.useState('');
   const [matches, setMatches] = React.useState<RegExp>(new RegExp(''));
 
-  const textAreaContainerRef = React.useRef<HTMLDivElement>(null);
-
   let timeoutId: ReturnType<typeof setTimeout>;
 
   React.useEffect(() => {
@@ -95,7 +93,7 @@ const regexTester = () => {
           <InputRightAddon children='/g' />
         </InputGroup>
       </Flex>
-      <Box ref={textAreaContainerRef}>
+      <Box>
         <TextAreaViewer
           headingText='Text'
           deleteAction
