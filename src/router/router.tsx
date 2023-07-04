@@ -28,7 +28,7 @@ const router = createBrowserRouter([
             element: <Base64TextView />
           },
           {
-            path: 'base64-image',
+            path: 'base64-file',
             element: <Base64ImageView />
           }
         ]
