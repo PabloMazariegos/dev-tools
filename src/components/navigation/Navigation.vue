@@ -3,7 +3,7 @@
     <template v-slot:prepend>
       <v-app-bar-nav-icon
         @click="drawer = !drawer"
-        v-if="$display.mobile"
+        v-if="mobile"
       ></v-app-bar-nav-icon>
     </template>
 
@@ -16,32 +16,40 @@
   </v-app-bar>
   <v-navigation-drawer
     v-model="drawer"
-    :permanent="!$display.mobile"
-    :absolute="!$display.mobile"
+    :permanent="!mobile"
+    :absolute="!mobile"
   >
     <v-list
-      :lines="false"
-      color="info"
-      :items="navigationItems"
       nav
+      color="info"
+      :lines="false"
+      :items="navigationItems"
     >
+      <template v-slot:item="{ props }">
+        <v-list-item
+          nav
+          v-bind="props"
+          :active="props.to === route.path"
+        ></v-list-item>
+      </template>
     </v-list>
   </v-navigation-drawer>
 </template>
 
 <script lang="ts" setup>
   import { ref } from 'vue'
-  import { useRouter } from 'vue-router'
+  import { useRouter, useRoute } from 'vue-router'
   import { useDisplay } from 'vuetify'
   import { navigationItems } from '@/config/navigation-items'
 
-  const $display = useDisplay()
-  const $router = useRouter()
+  const { mobile } = useDisplay()
+  const router = useRouter()
+  const route = useRoute()
 
-  const drawer = ref(!$display.mobile.value)
+  const drawer = ref(!mobile.value)
 
   const goToHome = () => {
-    $router.push({ name: 'Home' })
+    router.push({ name: 'Home' })
   }
 </script>
 

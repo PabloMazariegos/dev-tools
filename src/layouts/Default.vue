@@ -2,6 +2,7 @@
   <v-main>
     <Navigation />
     <v-container fluid>
+      <Alert />
       <router-view />
     </v-container>
   </v-main>
@@ -9,4 +10,5 @@
 
 <script lang="ts" setup>
   import Navigation from '@/components/navigation/Navigation.vue'
+  import Alert from '@/components/alert/Alert.vue';
 </script>
