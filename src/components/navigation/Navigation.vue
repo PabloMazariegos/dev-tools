@@ -28,6 +28,8 @@
       <template v-slot:item="{ props }">
         <v-list-item
           nav
+          class="ml-3"
+          rounded="lg"
           v-bind="props"
           :active="props.to === route.path"
         ></v-list-item>

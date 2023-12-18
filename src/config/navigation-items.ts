@@ -7,11 +7,8 @@ export const navigationItems = [
     title: 'Base64',
     props: {
       to: '/encoders-decoders/base64',
-      exact: true,
+      exact: true
     }
-  },
-  {
-    type: 'divider'
   },
   {
     type: 'subheader',
@@ -25,9 +22,6 @@ export const navigationItems = [
     }
   },
   {
-    type: 'divider'
-  },
-  {
     type: 'subheader',
     title: 'Encryption'
   },
@@ -37,9 +31,6 @@ export const navigationItems = [
       to: '/encryption/bcrypt',
       exact: true,
     }
-  },
-  {
-    type: 'divider'
   },
   {
     type: 'subheader',

@@ -1,8 +1,7 @@
 <template>
   <v-main>
     <Navigation />
-    <v-container fluid>
-      <Alert />
+    <v-container>
       <router-view />
     </v-container>
   </v-main>
